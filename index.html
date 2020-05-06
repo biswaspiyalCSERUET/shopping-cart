@@ -29,7 +29,7 @@
                            <input id="currentValue" type="text" class="form-control text-center" value="1" >
                            <button id="posNumber" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$1219</h5>
+                        <h5>$ <span id="priceOfMobile" >1219</span> </h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -43,12 +43,12 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="negNumberCase" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="currentValueCase" type="text" class="form-control text-center" value="1">
+                           <button id="posNumberCase" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5>$ <span id="priceOfCase">59</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -64,9 +64,9 @@
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5>$1,278</h5>
+                        <h5 id="subtotal" >$1,278</h5>
                         <h5>$0</h5>
-                        <h5>$1,278</h5>
+                        <h5 id="total" >$1,278</h5>
                      </div>
                   </div>
                </div>
@@ -83,48 +83,118 @@
    <script>
 
 
-      //positive button event handler
+      //positive button event handler for mobile
       const posButton=document.getElementById("posNumber");
         posButton.addEventListener("click",function(){
             
             updatePosText("currentValue");
+            addPriceMobile("priceOfMobile");
 
         })
 
-      //negative button event handler
+      //negative button event handler for mobile
       const negButton=document.getElementById("negNumber");
         negButton.addEventListener("click",function(){
            
            updateNegText("currentValue"); 
+           cutPriceMobile("priceOfMobile");
            
         })
 
-      //   function posClicked(){
-      //       var newer=1;
-      //       var newNumber=parseFloat(newer);
-      //       var total=newNumber+currentNumber;
-      //   }
+        //positive button event handler for case
+      const posBton=document.getElementById("posNumberCase");
+        posBton.addEventListener("click",function(){
+            
+            updatePosText("currentValueCase");
+            addPriceCase("priceOfCase");
 
+        })
+
+        //negative button event handler for case
+      const negBton=document.getElementById("negNumberCase");
+        negBton.addEventListener("click",function(){
+
+           updateNegText("currentValueCase");
+           cutPriceCase("priceOfCase");
+
+        })
+
+
+      //   var priceMobile = addPriceMobile("priceOfMobile") + cutPriceMobile("priceOfMobile")
+      //   var priceCase = addPriceCase("priceOfCase") + cutPriceCase("priceOfCase");
+      //   subTotal = priceMobile + priceCase;
+
+
+        //function for adding the value of positive button
          function updatePosText(id){
             //read old value
-            var current=document.getElementById("currentValue").value;
+            var current=document.getElementById(id).value;
             var currentNumber=parseFloat(current);
             //add,write and get updated value
             var newer=1;
             var newNumber=parseFloat(newer);
             var total=newNumber+currentNumber;
-            document.getElementById("currentValue").value=total;
+            document.getElementById(id).value=total;
          }
 
+         //function for subtracting the value of negative button
          function updateNegText(id){
             //read old value
-            var current=document.getElementById("currentValue").value;
+            var current=document.getElementById(id).value;
             var currentNumber=parseFloat(current);
             //add,write and get updated value
             var newer=1;
             var newNumber=parseFloat(newer);
             var total=currentNumber-newNumber;
-            document.getElementById("currentValue").value=total;
+            document.getElementById(id).value=total;
+         }
+
+         //adding price for mobile
+         function addPriceMobile(id){
+            //read old value
+            var current=document.getElementById(id).innerText;
+            var currentNumber=parseFloat(current);
+            //add,write and get updated value
+            var newer=1219;
+            var newNumber=parseFloat(newer);
+            var total=newNumber+currentNumber;
+            document.getElementById(id).innerText=total;
+         }
+
+         //cutting price for mobile
+         function cutPriceMobile(id){
+         //read old value
+         var current=document.getElementById(id).innerText;
+         var currentNumber=parseFloat(current);
+         //add,write and get updated value
+         var newer=1219;
+         var newNumber=parseFloat(newer);
+         var total=currentNumber-newNumber;
+         document.getElementById(id).innerText=total;
+         }
+
+         //adding price for case
+         function addPriceCase(id){
+            //read old value
+            var current=document.getElementById(id).innerText;
+            var currentNumber=parseFloat(current);
+            //add,write and get updated value
+            var newer=59;
+            var newNumber=parseFloat(newer);
+            var total=newNumber+currentNumber;
+            document.getElementById(id).innerText=total;
+         }
+
+         //cutting price for case
+         function cutPriceCase(id){
+         //read old value
+         var current=document.getElementById(id).innerText;
+         var currentNumber=parseFloat(current);
+         //add,write and get updated value
+         var newer=59;
+         var newNumber=parseFloat(newer);
+         var total=currentNumber-newNumber;
+         document.getElementById(id).innerText=total;
          }
 
 
