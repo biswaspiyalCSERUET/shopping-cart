@@ -25,9 +25,9 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="negNumber" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="currentValue" type="text" class="form-control text-center" value="1" >
+                           <button id="posNumber" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
                         <h5>$1219</h5>
                         <img src="images/remove.png" alt="" class="remove-item">
@@ -77,6 +77,59 @@
          </div>
       </div>
    </section>
+
+
+
+   <script>
+
+
+      //positive button event handler
+      const posButton=document.getElementById("posNumber");
+        posButton.addEventListener("click",function(){
+            
+            updatePosText("currentValue");
+
+        })
+
+      //negative button event handler
+      const negButton=document.getElementById("negNumber");
+        negButton.addEventListener("click",function(){
+           
+           updateNegText("currentValue"); 
+           
+        })
+
+      //   function posClicked(){
+      //       var newer=1;
+      //       var newNumber=parseFloat(newer);
+      //       var total=newNumber+currentNumber;
+      //   }
+
+         function updatePosText(id){
+            //read old value
+            var current=document.getElementById("currentValue").value;
+            var currentNumber=parseFloat(current);
+            //add,write and get updated value
+            var newer=1;
+            var newNumber=parseFloat(newer);
+            var total=newNumber+currentNumber;
+            document.getElementById("currentValue").value=total;
+         }
+
+         function updateNegText(id){
+            //read old value
+            var current=document.getElementById("currentValue").value;
+            var currentNumber=parseFloat(current);
+            //add,write and get updated value
+            var newer=1;
+            var newNumber=parseFloat(newer);
+            var total=currentNumber-newNumber;
+            document.getElementById("currentValue").value=total;
+         }
+
+
+   </script>
+
 </body>
 
 </html>
