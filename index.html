@@ -29,7 +29,7 @@
                            <input id="currentValue" type="text" class="form-control text-center" value="1" >
                            <button id="posNumber" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$ <span id="priceOfMobile" >1219</span> </h5>
+                        <h5>$ <span id="priceOfMobile">1219</span> </h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -64,9 +64,9 @@
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5 id="subtotal" >$1,278</h5>
+                        <h5>$ <span id="subTotal">1278</span></h5>
                         <h5>$0</h5>
-                        <h5 id="total" >$1,278</h5>
+                        <h5>$ <span id="total">1278</span></h5>
                      </div>
                   </div>
                </div>
@@ -89,6 +89,8 @@
             
             updatePosText("currentValue");
             addPriceMobile("priceOfMobile");
+            addPriceMobile("subTotal");
+            addPriceMobile("total");
 
         })
 
@@ -98,6 +100,8 @@
            
            updateNegText("currentValue"); 
            cutPriceMobile("priceOfMobile");
+           cutPriceMobile("subTotal");
+           cutPriceMobile("total");
            
         })
 
@@ -107,6 +111,8 @@
             
             updatePosText("currentValueCase");
             addPriceCase("priceOfCase");
+            addPriceCase("subTotal");
+            addPriceCase("total");
 
         })
 
@@ -116,13 +122,12 @@
 
            updateNegText("currentValueCase");
            cutPriceCase("priceOfCase");
+           cutPriceCase("subTotal");
+           cutPriceCase("total");
 
         })
 
 
-      //   var priceMobile = addPriceMobile("priceOfMobile") + cutPriceMobile("priceOfMobile")
-      //   var priceCase = addPriceCase("priceOfCase") + cutPriceCase("priceOfCase");
-      //   subTotal = priceMobile + priceCase;
 
 
         //function for adding the value of positive button
@@ -151,30 +156,36 @@
 
          //adding price for mobile
          function addPriceMobile(id){
+
+            //read old value
+            var current=document.getElementById(id).innerText;
+            var currentNumber=parseFloat(current);
+
+            //add,write and get updated value
+            var newer=1219;
+            var newNumber=parseFloat(newer);
+            var total=newNumber+currentNumber;
+            document.getElementById(id).innerText=total;
+            
+         }
+
+         //cutting price for mobile
+         function cutPriceMobile(id){
+
             //read old value
             var current=document.getElementById(id).innerText;
             var currentNumber=parseFloat(current);
             //add,write and get updated value
             var newer=1219;
             var newNumber=parseFloat(newer);
-            var total=newNumber+currentNumber;
+            var total=currentNumber-newNumber;
             document.getElementById(id).innerText=total;
-         }
 
-         //cutting price for mobile
-         function cutPriceMobile(id){
-         //read old value
-         var current=document.getElementById(id).innerText;
-         var currentNumber=parseFloat(current);
-         //add,write and get updated value
-         var newer=1219;
-         var newNumber=parseFloat(newer);
-         var total=currentNumber-newNumber;
-         document.getElementById(id).innerText=total;
          }
 
          //adding price for case
          function addPriceCase(id){
+
             //read old value
             var current=document.getElementById(id).innerText;
             var currentNumber=parseFloat(current);
@@ -183,19 +194,24 @@
             var newNumber=parseFloat(newer);
             var total=newNumber+currentNumber;
             document.getElementById(id).innerText=total;
+
          }
 
          //cutting price for case
          function cutPriceCase(id){
-         //read old value
-         var current=document.getElementById(id).innerText;
-         var currentNumber=parseFloat(current);
-         //add,write and get updated value
-         var newer=59;
-         var newNumber=parseFloat(newer);
-         var total=currentNumber-newNumber;
-         document.getElementById(id).innerText=total;
+
+            //read old value
+            var current=document.getElementById(id).innerText;
+            var currentNumber=parseFloat(current);
+            //add,write and get updated value
+            var newer=59;
+            var newNumber=parseFloat(newer);
+            var total=currentNumber-newNumber;
+            document.getElementById(id).innerText=total;
+
          }
+
+
 
 
    </script>
